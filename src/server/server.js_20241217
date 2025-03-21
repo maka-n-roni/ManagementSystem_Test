@@ -1,0 +1,31 @@
+const express = require('express');
+
+const app = express();
+app.listen(3000, function () {
+    console.log('listening on 3000')
+});
+
+// mssql 연동 -> 실제 본인의 mssql 값 작성해주면 됩니다.
+var mssql = require("mssql");
+const { sql } = require('../src/config/server');
+var dbConfig_user = {
+    server: "10.60.61.51",
+    database: "infradb",
+    user: "grafana",
+    password: "grafana",
+    port: 1433,
+    options: {      // Setting the TLS ServerName to an IP address is not permitted by RFC 6066. 오류 해결
+        encrypt: false,
+        database: process.env.SQL_DATABASE , //update me
+        instanceName: process.env.SQL_INSTANCE,
+        trustServerCertificate: true,
+    } 
+    
+};
+
+mssql.connect(dbConfig_user, function(err){
+    if(err){
+        return console.error('error : ', err);
+    }
+    console.log('MSSQL 연결 완료')
+});
