@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Management system test ##
-본 프로젝트는 디자인팀 요청에 따라 만들어진 관리 시스템입니다.
+본 프로젝트는 테스트를 위해 만들어진 무언가입니다.
 
 ## Available Scripts
 
